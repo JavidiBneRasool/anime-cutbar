@@ -75,7 +75,8 @@
     .cbtn:active{transform:scale(.9);}
     .cprev{min-height:110px;display:flex;align-items:center;justify-content:center;padding:20px 14px;background:rgba(0,0,0,.16);position:relative;overflow:hidden;}
     body.light .cprev{background:rgba(80,100,200,.05);}
-    .adslot{max-height:280px;margin:10px 0;text-align:center;overflow:hidden;border-radius:10px;min-height:0;}
+    .adslot{margin:10px 0;text-align:center;overflow:hidden;border-radius:10px;min-height:0;max-height:280px;}
+    .adslot ins{max-height:280px;}
     #loadMoreBtn{font-family:'Space Mono',monospace;font-size:11px;padding:11px 30px;border-radius:100px;border:1px solid var(--a3);background:transparent;color:var(--a3);cursor:pointer;transition:all .22s;letter-spacing:1px;display:none;}
     #loadMoreBtn:hover{background:var(--a3);color:#fff;box-shadow:0 0 20px rgba(123,92,255,.4);}
 
@@ -176,6 +177,7 @@
 <div class="page active" id="page-home">
   <main>
     <div class="w">
+      <div id="root" class="grid"></div>
       <div style="text-align:center;margin-top:28px"><button id="loadMoreBtn">[ LOAD MORE ]</button></div>
       <div class="adslot" style="margin-top:36px">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7501400445815822" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>

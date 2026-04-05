@@ -533,11 +533,11 @@ add('Loaders','Mandelbrot Zoom',demo(id=>`
 
 add('Loaders','Magnetic Field',demo(id=>`
 <canvas id="${id}" width="160" height="100" style="width:160px;height:100px;"></canvas>
-<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;const lines=16;function draw(){ctx.clearRect(0,0,160,100);for(let l=0;l<lines;l++){const off=l/lines*Math.PI*2;ctx.beginPath();for(let x=0;x<=160;x+=2){const mag=Math.sin(x*.04+t+off)*20+Math.sin(x*.08-t+off)*12;const y=50+mag;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}const hue=l/lines;ctx.strokeStyle=`rgba(${Math.round(123+132*hue)},${Math.round(92+163*hue)},${Math.round(255-200*hue)},${.15+hue*.35})`;ctx.lineWidth=1.5;ctx.stroke();}t+=.04;requestAnimationFrame(draw);}draw();})();<\/script>`),'magneticField',`/* anime.cutbar.in — magnetic field lines */`);
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;const lines=16;function draw(){ctx.clearRect(0,0,160,100);for(let l=0;l<lines;l++){const off=l/lines*Math.PI*2;ctx.beginPath();for(let x=0;x<=160;x+=2){const mag=Math.sin(x*.04+t+off)*20+Math.sin(x*.08-t+off)*12;const y=50+mag;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}const hue=l/lines;ctx.strokeStyle="rgba("+Math.round(123+132*hue)+","+Math.round(92+163*hue)+","+Math.round(255-200*hue)+","+(0.15+hue*0.35)+")";ctx.lineWidth=1.5;ctx.stroke();}t+=.04;requestAnimationFrame(draw);}draw();})();<\/script>`),'magneticField',`/* anime.cutbar.in — magnetic field lines */`);
 
 add('Loaders','Neural Web',demo(id=>`
 <canvas id="${id}" width="160" height="100" style="width:160px;height:100px;"></canvas>
-<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');const nodes=Array.from({length:12},()=>({x:Math.random()*160,y:Math.random()*100,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6}));function tick(){ctx.fillStyle='rgba(7,9,15,.15)';ctx.fillRect(0,0,160,100);nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<4||n.x>156)n.vx*=-1;if(n.y<4||n.y>96)n.vy*=-1;});nodes.forEach((a,i)=>nodes.slice(i+1).forEach(b=>{const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(123,92,255,${(1-d/80)*.6})`;ctx.lineWidth=1;ctx.stroke();}}));nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,3,0,6.28);ctx.fillStyle='#00f5d4';ctx.shadowBlur=8;ctx.shadowColor='#00f5d4';ctx.fill();ctx.shadowBlur=0;});requestAnimationFrame(tick);}tick();})();<\/script>`),'neuralWeb',`/* anime.cutbar.in — neural web simulation */`);
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');const nodes=Array.from({length:12},()=>({x:Math.random()*160,y:Math.random()*100,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6}));function tick(){ctx.fillStyle='rgba(7,9,15,.15)';ctx.fillRect(0,0,160,100);nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<4||n.x>156)n.vx*=-1;if(n.y<4||n.y>96)n.vy*=-1;});nodes.forEach((a,i)=>nodes.slice(i+1).forEach(b=>{const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle="rgba(123,92,255,"+((1-d/80)*.6)+")";ctx.lineWidth=1;ctx.stroke();}}));nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,3,0,6.28);ctx.fillStyle='#00f5d4';ctx.shadowBlur=8;ctx.shadowColor='#00f5d4';ctx.fill();ctx.shadowBlur=0;});requestAnimationFrame(tick);}tick();})();<\/script>`),'neuralWeb',`/* anime.cutbar.in — neural web simulation */`);
 
 add('Loaders','Plasma Ball',demo(id=>`
 <canvas id="${id}" width="110" height="110" style="width:110px;height:110px;border-radius:50%;"></canvas>
@@ -545,7 +545,7 @@ add('Loaders','Plasma Ball',demo(id=>`
 
 add('Loaders','Hypnotic Ring',demo(id=>`
 <canvas id="${id}" width="110" height="110" style="width:110px;height:110px;"></canvas>
-<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,110,110);for(let r=6;r<=48;r+=6){ctx.beginPath();const segs=Math.round(r*1.2);for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2+t*(r%12===0?1:-1);const wave=Math.sin(a*4+t*2)*3;ctx.lineTo(55+Math.cos(a)*(r+wave),55+Math.sin(a)*(r+wave));}ctx.closePath();const p=r/48;ctx.strokeStyle=`hsl(${160+p*120+t*20},80%,${50+p*20}%)`;ctx.lineWidth=1.5;ctx.stroke();}t+=.025;requestAnimationFrame(draw);}draw();})();<\/script>`),'hypnoticRing',`/* anime.cutbar.in — hypnotic ring */`);
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,110,110);for(let r=6;r<=48;r+=6){ctx.beginPath();const segs=Math.round(r*1.2);for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2+t*(r%12===0?1:-1);const wave=Math.sin(a*4+t*2)*3;ctx.lineTo(55+Math.cos(a)*(r+wave),55+Math.sin(a)*(r+wave));}ctx.closePath();const p=r/48;ctx.strokeStyle="hsl("+(160+p*120+t*20)+",80%,"+(50+p*20)+"%)";ctx.lineWidth=1.5;ctx.stroke();}t+=.025;requestAnimationFrame(draw);}draw();})();<\/script>`),'hypnoticRing',`/* anime.cutbar.in — hypnotic ring */`);
 
 add('Loaders','Particle Vortex',demo(id=>`
 <canvas id="${id}" width="120" height="120" style="width:120px;height:120px;"></canvas>
@@ -553,7 +553,7 @@ add('Loaders','Particle Vortex',demo(id=>`
 
 add('Loaders','String Theory',demo(id=>`
 <canvas id="${id}" width="180" height="90" style="width:180px;height:90px;"></canvas>
-<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,180,90);for(let s=0;s<8;s++){ctx.beginPath();const off=s/8*Math.PI*2;for(let x=0;x<=180;x+=2){const y=45+Math.sin(x*.035+t+off)*18+Math.sin(x*.07-t*.8+off)*10;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.strokeStyle=`hsla(${s*45+t*30},80%,60%,0.5)`;ctx.lineWidth=1.5;ctx.stroke();}t+=.035;requestAnimationFrame(draw);}draw();})();<\/script>`),'stringTheory',`/* anime.cutbar.in — string theory waves */`);
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,180,90);for(let s=0;s<8;s++){ctx.beginPath();const off=s/8*Math.PI*2;for(let x=0;x<=180;x+=2){const y=45+Math.sin(x*.035+t+off)*18+Math.sin(x*.07-t*.8+off)*10;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.strokeStyle="hsla("+(s*45+t*30)+",80%,60%,0.5)";ctx.lineWidth=1.5;ctx.stroke();}t+=.035;requestAnimationFrame(draw);}draw();})();<\/script>`),'stringTheory',`/* anime.cutbar.in — string theory waves */`);
 
 add('Loaders','Quantum Tunnel',demo(id=>`
 <div style="position:relative;width:120px;height:80px;overflow:hidden;border-radius:8px;">
@@ -788,7 +788,7 @@ add('Science','Conway Life',demo(id=>`
 
 add('Science','Vector Field',demo(id=>`
 <canvas id="${id}" width="160" height="100" style="width:160px;height:100px;"></canvas>
-<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,160,100);const step=20;for(let x=10;x<160;x+=step)for(let y=10;y<100;y+=step){const angle=Math.sin(x*.04+t)*Math.PI+Math.cos(y*.04-t)*.8;const len=8;const ex=x+Math.cos(angle)*len,ey=y+Math.sin(angle)*len;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(ex,ey);const hue=((Math.atan2(ey-y,ex-x)/Math.PI+1)*180)%360;ctx.strokeStyle=`hsla(${hue},80%,60%,.7)`;ctx.lineWidth=1.5;ctx.stroke();ctx.beginPath();ctx.arc(ex,ey,2,0,6.28);ctx.fillStyle=`hsla(${hue},80%,70%,.9)`;ctx.fill();}t+=.04;requestAnimationFrame(draw);}draw();})();<\/script>`),'vectorField',`/* anime.cutbar.in — vector field visualization */`);
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');let t=0;function draw(){ctx.clearRect(0,0,160,100);const step=20;for(let x=10;x<160;x+=step)for(let y=10;y<100;y+=step){const angle=Math.sin(x*.04+t)*Math.PI+Math.cos(y*.04-t)*.8;const len=8;const ex=x+Math.cos(angle)*len,ey=y+Math.sin(angle)*len;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(ex,ey);const hue=((Math.atan2(ey-y,ex-x)/Math.PI+1)*180)%360;ctx.strokeStyle="hsla("+(hue)+",80%,60%,.7)";ctx.lineWidth=1.5;ctx.stroke();ctx.beginPath();ctx.arc(ex,ey,2,0,6.28);ctx.fillStyle="hsla("+(hue)+",80%,70%,.9)";ctx.fill();}t+=.04;requestAnimationFrame(draw);}draw();})();<\/script>`),'vectorField',`/* anime.cutbar.in — vector field visualization */`);
 
 add('Science','Fourier Sound',demo(id=>`
 <canvas id="${id}" width="180" height="90" style="width:180px;height:90px;"></canvas>
@@ -887,7 +887,7 @@ add('Text FX','Counter Flip',demo(id=>`
 
 add('Text FX','Rainbow Wave',demo(id=>`
 <div id="${id}" style="font-family:'Orbitron',monospace,sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;padding:10px;display:flex;"></div>
-<script>(function(){const el=document.getElementById('${id}');if(!el)return;const txt='RAINBOW';let t=0;el.innerHTML=[...txt].map((ch,i)=>`<span id="${id}s${i}">${ch}</span>`).join('');function anim(){[...txt].forEach((ch,i)=>{const span=document.getElementById('${id}s${i}');if(span){const hue=(i/txt.length*360+t*2)%360;span.style.color=`hsl(${hue},90%,65%)`;span.style.textShadow=`0 0 10px hsl(${hue},90%,65%)`;span.style.transform=`translateY(${Math.sin(t*.08+i*.6)*5}px)`;span.style.display='inline-block';}});t++;requestAnimationFrame(anim);}anim();})();<\/script>`),'rainbowWave',`/* anime.cutbar.in — rainbow wave text */`);
+<script>(function(){const el=document.getElementById('${id}');if(!el)return;const txt='RAINBOW';let t=0;el.innerHTML=[...txt].map((ch,i)=>"<span id=\"${id}s"+i+"\">"+(ch)+"</span>").join('');function anim(){[...txt].forEach((ch,i)=>{const span=document.getElementById('${id}s${i}');if(span){const hue=(i/txt.length*360+t*2)%360;span.style.color="hsl("+(hue)+",90%,65%)";span.style.textShadow="0 0 10px hsl("+(hue)+",90%,65%)";span.style.transform="translateY("+(Math.sin(t*.08+i*.6)*5)+"px)";span.style.display='inline-block';}});t++;requestAnimationFrame(anim);}anim();})();<\/script>`),'rainbowWave',`/* anime.cutbar.in — rainbow wave text */`);
 
 add('Text FX','Morse Code',demo(id=>`
 <div style="padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center;">
@@ -907,3 +907,361 @@ HOLOGRAM
 </div>`),'hologramText',`/* anime.cutbar.in — hologram scan text */`);
 
 console.log('✅ anime.cutbar.in v4 — '+Object.values(window.componentsList).reduce((a,c)=>a+c.length,0)+' components | '+Object.keys(window.componentsList).length+' categories | CSS Spinner Studio enabled');
+
+/* ═══════════════════════════════════════════
+   INPUTS  (8 components)
+═══════════════════════════════════════════ */
+
+// Neon Input Field
+add('Inputs','Neon Input',demo(id=>`
+<div style="display:flex;flex-direction:column;gap:6px;padding:10px;width:200px;">
+  <label style="font-family:monospace;font-size:9px;letter-spacing:2px;color:#7b5cff;text-transform:uppercase;">USERNAME</label>
+  <div style="position:relative;">
+    <input id="${id}" type="text" placeholder="type here..." style="width:100%;padding:10px 14px;background:rgba(0,0,0,.4);border:1px solid rgba(123,92,255,.3);border-radius:8px;color:#fff;font-family:monospace;font-size:12px;outline:none;transition:all .3s;">
+    <div id="${id}line" style="position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,#7b5cff,#00f5d4);border-radius:2px;transition:all .35s;transform:translateX(-50%);"></div>
+  </div>
+</div>
+<script>(function(){const inp=document.getElementById('${id}'),line=document.getElementById('${id}line');if(!inp)return;inp.addEventListener('focus',()=>{inp.style.borderColor='rgba(123,92,255,.7)';inp.style.boxShadow='0 0 16px rgba(123,92,255,.2)';line.style.width='100%';});inp.addEventListener('blur',()=>{inp.style.borderColor='rgba(123,92,255,.3)';inp.style.boxShadow='none';line.style.width='0';});})();<\/script>
+`),'neonInput',`/* anime.cutbar.in — neon input */`);
+
+// OTP Input
+add('Inputs','OTP Code',demo(id=>`
+<div style="display:flex;gap:8px;padding:10px;justify-content:center;">
+  <style>.otp${id}{width:38px;height:46px;background:rgba(0,0,0,.4);border:2px solid rgba(123,92,255,.25);border-radius:10px;text-align:center;color:#fff;font-family:monospace;font-size:18px;font-weight:700;outline:none;transition:all .25s;caret-color:#7b5cff;}.otp${id}:focus{border-color:#7b5cff;box-shadow:0 0 14px rgba(123,92,255,.3);background:rgba(123,92,255,.05);}.otp${id}.filled{border-color:#00f5d4;background:rgba(0,245,212,.04);}</style>
+  ${[0,1,2,3,4,5].map(i=>`<input class="otp${id}" maxlength="1" type="text" inputmode="numeric">`).join('')}
+</div>
+<script>(function(){const inputs=[...document.querySelectorAll('.otp${id}')];inputs.forEach((inp,i)=>{inp.addEventListener('input',e=>{inp.value=inp.value.replace(/\D/g,'');inp.classList.toggle('filled',inp.value!=='');if(inp.value&&i<inputs.length-1)inputs[i+1].focus();});inp.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!inp.value&&i>0)inputs[i-1].focus();});});})();<\/script>
+`),'otpInput',`/* anime.cutbar.in — OTP code input */`);
+
+// Search Bar — animated
+add('Inputs','Search Bar',demo(id=>`
+<div id="${id}wrap" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,0,0,.35);border:1px solid rgba(123,92,255,.2);border-radius:100px;width:220px;transition:all .3s;cursor:text;" onclick="document.getElementById('${id}').focus()">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a5580" stroke-width="2.5" id="${id}icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input id="${id}" type="text" placeholder="Search components..." style="border:none;background:transparent;color:#dde4f8;font-family:monospace;font-size:11px;outline:none;width:100%;caret-color:#7b5cff;">
+</div>
+<script>(function(){const inp=document.getElementById('${id}'),wrap=document.getElementById('${id}wrap'),icon=document.getElementById('${id}icon');if(!inp)return;inp.addEventListener('focus',()=>{wrap.style.borderColor='rgba(123,92,255,.6)';wrap.style.boxShadow='0 0 20px rgba(123,92,255,.15)';icon.setAttribute('stroke','#7b5cff');});inp.addEventListener('blur',()=>{wrap.style.borderColor='rgba(123,92,255,.2)';wrap.style.boxShadow='none';icon.setAttribute('stroke','#4a5580');});})();<\/script>
+`),'searchBar',`/* anime.cutbar.in — animated search bar */`);
+
+// Range Slider — neon
+add('Inputs','Neon Slider',demo(id=>`
+<div style="padding:16px 20px;width:220px;">
+  <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+    <span style="font-family:monospace;font-size:9px;letter-spacing:2px;color:#4a5580;">INTENSITY</span>
+    <span id="${id}val" style="font-family:monospace;font-size:12px;color:#00f5d4;font-weight:700;">65%</span>
+  </div>
+  <style>
+  .nslider${id}{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.08);outline:none;}
+  .nslider${id}::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#00f5d4,#7b5cff);cursor:pointer;box-shadow:0 0 12px rgba(0,245,212,.6);transition:transform .2s;}
+  .nslider${id}::-webkit-slider-thumb:hover{transform:scale(1.2);}
+  </style>
+  <input type="range" class="nslider${id}" id="${id}" min="0" max="100" value="65" style="--v:65%">
+</div>
+<script>(function(){const s=document.getElementById('${id}'),v=document.getElementById('${id}val');if(!s)return;function upd(){const pct=s.value+'%';v.textContent=pct;s.style.background='linear-gradient(90deg,#00f5d4 '+pct+',rgba(255,255,255,.08) '+pct+')';}s.addEventListener('input',upd);upd();})();<\/script>
+`),'neonSlider',`/* anime.cutbar.in — neon range slider */`);
+
+// Toggle Checkbox
+add('Inputs','Glow Checkbox',demo(id=>`
+<div style="display:flex;flex-direction:column;gap:10px;padding:10px;">
+  <style>.gcb${id}{display:flex;align-items:center;gap:10px;cursor:pointer;}.gcb${id} input{display:none;}.gcb${id} .box{width:20px;height:20px;border-radius:5px;border:2px solid rgba(123,92,255,.4);background:transparent;transition:all .25s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}.gcb${id} input:checked~.box{background:linear-gradient(135deg,#7b5cff,#00f5d4);border-color:transparent;box-shadow:0 0 12px rgba(123,92,255,.5);}.gcb${id} .lbl{font-family:monospace;font-size:11px;color:#7b8ab8;transition:color .25s;}.gcb${id} input:checked~.lbl{color:#dde4f8;}</style>
+  ${['Animations enabled','Dark mode','Auto copy','Show previews'].map((l,i)=>`
+  <label class="gcb${id}">
+    <input type="checkbox" ${i<2?'checked':''}>
+    <div class="box"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="2,6 5,9 10,3"/></svg></div>
+    <span class="lbl">${l}</span>
+  </label>`).join('')}
+</div>
+`),'glowCheckbox',`/* anime.cutbar.in — glow checkbox */`);
+
+// Star Rating
+add('Inputs','Star Rating',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px;">
+  <div id="${id}" style="display:flex;gap:4px;cursor:pointer;">
+    ${[1,2,3,4,5].map(i=>`<div data-v="${i}" style="font-size:28px;transition:all .2s;filter:grayscale(1);opacity:.4;transform:scale(.9);">★</div>`).join('')}
+  </div>
+  <div id="${id}lb" style="font-family:monospace;font-size:9px;color:#4a5580;letter-spacing:2px;">RATE THIS</div>
+</div>
+<script>(function(){const wrap=document.getElementById('${id}'),lb=document.getElementById('${id}lb');if(!wrap)return;const stars=[...wrap.children];const labels=['TERRIBLE','BAD','OKAY','GOOD','AMAZING!'];let selected=0;function paint(n,hover){stars.forEach((s,i)=>{if(i<n){s.style.filter='none';s.style.opacity='1';s.style.transform='scale(1.1)';s.style.color=hover?'#ffcc00':'#ffaa00';s.style.textShadow=hover?'0 0 12px #ffcc00':'0 0 8px #ffaa00';}else{s.style.filter='grayscale(1)';s.style.opacity='.35';s.style.transform='scale(.9)';s.style.color='';s.style.textShadow='';}});}stars.forEach(s=>{s.addEventListener('mouseenter',()=>{const v=+s.dataset.v;paint(v,true);lb.textContent=labels[v-1];lb.style.color='#ffcc00';});s.addEventListener('mouseleave',()=>{paint(selected,false);lb.textContent=selected?labels[selected-1]:'RATE THIS';lb.style.color=selected?'#ffaa00':'#4a5580';});s.addEventListener('click',()=>{selected=+s.dataset.v;paint(selected,false);lb.textContent=labels[selected-1];lb.style.color='#ffaa00';});});})();<\/script>
+`),'starRating',`/* anime.cutbar.in — star rating input */`);
+
+// Color Picker Display
+add('Inputs','Neon Color Pick',demo(id=>`
+<div style="padding:10px;display:flex;flex-direction:column;gap:10px;align-items:center;">
+  <div id="${id}preview" style="width:80px;height:80px;border-radius:16px;background:#7b5cff;box-shadow:0 0 24px rgba(123,92,255,.5);transition:all .3s;border:3px solid rgba(255,255,255,.1);"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:180px;">
+    ${['#00f5d4','#7b5cff','#ff2d78','#ffaa00','#00cc55','#ff6600','#0088ff','#ff44aa'].map(c=>`<div onclick="document.getElementById('${id}preview').style.background='${c}';document.getElementById('${id}preview').style.boxShadow='0 0 24px ${c}88'" style="width:22px;height:22px;border-radius:6px;background:${c};cursor:pointer;transition:transform .2s;box-shadow:0 2px 8px ${c}66;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"></div>`).join('')}
+  </div>
+  <input type="color" id="${id}pick" style="opacity:0;width:0;height:0;position:absolute;" onchange="const c=this.value;document.getElementById('${id}preview').style.background=c;document.getElementById('${id}preview').style.boxShadow='0 0 24px '+c+'88'">
+  <div onclick="document.getElementById('${id}pick').click()" style="font-family:monospace;font-size:9px;color:#4a5580;cursor:pointer;letter-spacing:2px;border:1px solid rgba(255,255,255,.08);padding:4px 10px;border-radius:6px;" onmouseover="this.style.color='#7b5cff'" onmouseout="this.style.color='#4a5580'">CUSTOM COLOR</div>
+</div>
+`),'neonColorPick',`/* anime.cutbar.in — neon color picker */`);
+
+// Tag Input
+add('Inputs','Tag Input',demo(id=>`
+<div style="padding:10px;width:220px;">
+  <div id="${id}tags" style="display:flex;flex-wrap:wrap;gap:5px;padding:8px;background:rgba(0,0,0,.35);border:1px solid rgba(123,92,255,.25);border-radius:10px;min-height:42px;cursor:text;" onclick="document.getElementById('${id}inp').focus()">
+    <style>.tag${id}{display:flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(123,92,255,.2);border:1px solid rgba(123,92,255,.35);border-radius:6px;font-family:monospace;font-size:10px;color:#a090ff;}</style>
+    <div class="tag${id}">UI <span onclick="this.parentElement.remove()" style="cursor:pointer;color:#ff2d78;font-size:12px;line-height:1;">×</span></div>
+    <div class="tag${id}">CSS <span onclick="this.parentElement.remove()" style="cursor:pointer;color:#ff2d78;font-size:12px;line-height:1;">×</span></div>
+    <input id="${id}inp" type="text" placeholder="add tag..." style="border:none;background:transparent;color:#dde4f8;font-family:monospace;font-size:11px;outline:none;min-width:60px;flex:1;caret-color:#7b5cff;">
+  </div>
+</div>
+<script>(function(){const inp=document.getElementById('${id}inp'),tags=document.getElementById('${id}tags');if(!inp)return;inp.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===',')&&inp.value.trim()){e.preventDefault();const v=inp.value.trim().replace(',','');const tag=document.createElement('div');tag.className='tag${id}';tag.innerHTML=v+' <span onclick="this.parentElement.remove()" style="cursor:pointer;color:#ff2d78;font-size:12px;line-height:1;">×</span>';tags.insertBefore(tag,inp);inp.value='';}else if(e.key==='Backspace'&&!inp.value){const tagEls=[...tags.querySelectorAll('.tag${id}')];if(tagEls.length)tagEls[tagEls.length-1].remove();}});})();<\/script>
+`),'tagInput',`/* anime.cutbar.in — tag input */`);
+
+/* ═══════════════════════════════════════════
+   GAMING  (8 components)
+═══════════════════════════════════════════ */
+
+// Health Bar
+add('Gaming','Health Bar',demo(id=>`
+<div style="padding:14px;width:220px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+    <span style="font-family:monospace;font-size:10px;color:#ff2d78;letter-spacing:1px;">❤ HEALTH</span>
+    <span id="${id}val" style="font-family:monospace;font-size:10px;color:#ff2d78;">78 / 100</span>
+  </div>
+  <div style="height:14px;background:rgba(255,0,0,.1);border-radius:7px;overflow:hidden;border:1px solid rgba(255,45,120,.2);">
+    <div id="${id}bar" style="height:100%;width:78%;background:linear-gradient(90deg,#ff2d78,#ff6060);border-radius:7px;transition:width .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(255,45,120,.5);position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0px,rgba(255,255,255,.1) 10px,transparent 10px,transparent 20px);animation:hbscan${id} 2s linear infinite;"></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:10px;justify-content:center;">
+    <button onclick="const b=document.getElementById('${id}bar'),v=document.getElementById('${id}val');let pct=parseFloat(b.style.width)||78;pct=Math.max(0,pct-15);b.style.width=pct+'%';v.textContent=Math.round(pct)+' / 100';b.style.background=pct<30?'linear-gradient(90deg,#ff0000,#ff4444)':pct<60?'linear-gradient(90deg,#ff6600,#ff9900)':'linear-gradient(90deg,#ff2d78,#ff6060)';" style="padding:4px 12px;border:1px solid rgba(255,45,120,.3);background:transparent;color:#ff2d78;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">- HIT</button>
+    <button onclick="const b=document.getElementById('${id}bar'),v=document.getElementById('${id}val');let pct=parseFloat(b.style.width)||78;pct=Math.min(100,pct+20);b.style.width=pct+'%';v.textContent=Math.round(pct)+' / 100';b.style.background='linear-gradient(90deg,#ff2d78,#ff6060)';" style="padding:4px 12px;border:1px solid rgba(0,245,212,.3);background:transparent;color:#00f5d4;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">+ HEAL</button>
+  </div>
+  <style>@keyframes hbscan${id}{from{transform:translateX(-100%)}to{transform:translateX(200%)}}</style>
+</div>
+`),'healthBar',`/* anime.cutbar.in — RPG health bar */`);
+
+// XP Bar
+add('Gaming','XP Level Bar',demo(id=>`
+<div style="padding:14px;width:220px;">
+  <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+    <span style="font-family:monospace;font-size:10px;color:#7b5cff;letter-spacing:1px;">⚔ LVL 7</span>
+    <span id="${id}xp" style="font-family:monospace;font-size:10px;color:#7b5cff;">3,240 XP</span>
+  </div>
+  <div style="height:10px;background:rgba(123,92,255,.1);border-radius:5px;overflow:hidden;border:1px solid rgba(123,92,255,.2);">
+    <div id="${id}xpbar" style="height:100%;width:54%;background:linear-gradient(90deg,#7b5cff,#00f5d4);border-radius:5px;transition:width .6s cubic-bezier(.34,1.56,.64,1);box-shadow:0 0 10px rgba(123,92,255,.5);"></div>
+  </div>
+  <div style="font-family:monospace;font-size:8px;color:#4a5580;margin-top:4px;text-align:right;">6,000 to next level</div>
+  <button onclick="const b=document.getElementById('${id}xpbar'),xp=document.getElementById('${id}xp');let pct=parseFloat(b.style.width)||54;pct=Math.min(100,pct+Math.random()*18+5);if(pct>=100){pct=0;this.previousElementSibling.previousElementSibling.previousElementSibling.querySelector('span').textContent='⚔ LVL 8';}b.style.width=pct+'%';xp.textContent=Math.round(pct*60)+' XP';" style="margin-top:10px;width:100%;padding:6px;border:1px solid rgba(123,92,255,.3);background:transparent;color:#7b5cff;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;letter-spacing:1px;">+ GAIN XP</button>
+</div>
+`),'xpLevelBar',`/* anime.cutbar.in — XP level bar */`);
+
+// Skill Tree Node
+add('Gaming','Skill Tree',demo(id=>`
+<div style="padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px;">
+  <style>.stn${id}{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;font-size:18px;position:relative;}.stn${id}.locked{background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);filter:grayscale(1);opacity:.4;cursor:not-allowed;}.stn${id}.unlocked{background:rgba(123,92,255,.15);border:2px solid rgba(123,92,255,.4);box-shadow:0 0 14px rgba(123,92,255,.25);}.stn${id}.active{background:linear-gradient(135deg,rgba(123,92,255,.3),rgba(0,245,212,.2));border:2px solid #00f5d4;box-shadow:0 0 20px rgba(0,245,212,.4);}.conn${id}{width:2px;height:16px;background:rgba(255,255,255,.1);border-radius:1px;}.conn${id}.lit{background:linear-gradient(to bottom,#7b5cff,#00f5d4);box-shadow:0 0 6px rgba(123,92,255,.4);}</style>
+  <div class="stn${id} active" title="⚡ Speed I — Unlocked">⚡</div>
+  <div class="conn${id} lit"></div>
+  <div style="display:flex;gap:20px;align-items:flex-start;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div class="stn${id} unlocked" onclick="this.classList.toggle('active');this.classList.toggle('unlocked')" title="🔥 Fire I">🔥</div>
+      <div class="conn${id}"></div>
+      <div class="stn${id} locked" title="💥 Fire II">💥</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div class="stn${id} unlocked" onclick="this.classList.toggle('active');this.classList.toggle('unlocked')" title="🛡 Shield I">🛡</div>
+      <div class="conn${id}"></div>
+      <div class="stn${id} locked" title="⚔ Shield II">⚔</div>
+    </div>
+  </div>
+</div>
+`),'skillTree',`/* anime.cutbar.in — skill tree nodes */`);
+
+// Lives Counter
+add('Gaming','Lives Counter',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px;">
+  <div id="${id}lives" style="display:flex;gap:6px;">
+    ${[1,2,3].map(()=>`<div style="font-size:26px;transition:all .3s;filter:drop-shadow(0 0 6px rgba(255,45,120,.7));">❤️</div>`).join('')}
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button onclick="const l=document.getElementById('${id}lives');const hearts=[...l.children];const active=hearts.filter(h=>!h.style.opacity||h.style.opacity==='1');if(active.length){const h=active[active.length-1];h.style.transform='scale(0)';h.style.opacity='0';h.textContent='🖤';setTimeout(()=>{h.style.transform='scale(1)';},300);}" style="padding:5px 12px;border:1px solid rgba(255,45,120,.3);background:transparent;color:#ff2d78;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">- LIFE</button>
+    <button onclick="const l=document.getElementById('${id}lives');const hearts=[...l.children];const dead=hearts.filter(h=>h.textContent==='🖤');if(dead.length){const h=dead[0];h.style.transform='scale(0)';setTimeout(()=>{h.textContent='❤️';h.style.opacity='1';h.style.transform='scale(1.3)';setTimeout(()=>h.style.transform='scale(1)',200);},150);}" style="padding:5px 12px;border:1px solid rgba(0,245,212,.3);background:transparent;color:#00f5d4;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">+ LIFE</button>
+  </div>
+</div>
+`),'livesCounter',`/* anime.cutbar.in — gaming lives counter */`);
+
+// Score Counter
+add('Gaming','Score Counter',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px;">
+  <div style="font-family:monospace;font-size:9px;letter-spacing:3px;color:#4a5580;">SCORE</div>
+  <div id="${id}score" style="font-family:'Orbitron',monospace,sans-serif;font-size:36px;font-weight:900;color:#ffcc00;text-shadow:0 0 20px rgba(255,204,0,.5);transition:all .2s;letter-spacing:2px;">000000</div>
+  <div style="display:flex;gap:6px;">
+    ${[100,500,1000].map(pts=>`<button onclick="const el=document.getElementById('${id}score');let v=parseInt(el.textContent)||0;v+=${pts};el.textContent=String(v).padStart(6,'0');el.style.transform='scale(1.1)';el.style.color='#fff';setTimeout(()=>{el.style.transform='scale(1)';el.style.color='#ffcc00';},200);" style="padding:4px 10px;border:1px solid rgba(255,204,0,.2);background:transparent;color:#ffcc00;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">+${pts}</button>`).join('')}
+  </div>
+</div>
+`),'scoreCounter',`/* anime.cutbar.in — score counter */`);
+
+// Achievement Badge
+add('Gaming','Achievement Badge',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px;">
+  <div id="${id}badge" style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1a1a2e,#0d1120);border:3px solid rgba(255,204,0,.2);display:flex;align-items:center;justify-content:center;font-size:32px;cursor:pointer;transition:all .35s;position:relative;overflow:hidden;">
+    🏆
+    <div id="${id}shine" style="position:absolute;inset:0;background:conic-gradient(transparent 0deg,rgba(255,204,0,.2) 90deg,transparent 180deg);border-radius:50%;animation:badgeSpin${id} 3s linear infinite;"></div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-family:monospace;font-size:11px;font-weight:700;color:#ffcc00;letter-spacing:1px;">MASTER BUILDER</div>
+    <div style="font-family:monospace;font-size:9px;color:#4a5580;margin-top:2px;">Built 100 components</div>
+  </div>
+  <style>@keyframes badgeSpin${id}{to{transform:rotate(360deg)}}</style>
+</div>
+`),'achievementBadge',`/* anime.cutbar.in — achievement badge */`);
+
+// Game Controller Button
+add('Gaming','D-Pad',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;padding:10px;">
+  <div style="display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:3px;">
+    ${['','▲','','◄','●','►','','▼',''].map((l,i)=>l?
+      `<div onclick="document.getElementById('${id}dir').textContent='${['','UP','','LEFT','PRESS','RIGHT','','DOWN',''][i]}';this.style.background='linear-gradient(135deg,#7b5cff,#00f5d4)';this.style.boxShadow='0 0 12px rgba(123,92,255,.5)';setTimeout(()=>{this.style.background='rgba(255,255,255,.06)';this.style.boxShadow='none';},300);" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:${i===4?'50%':'8px'};display:flex;align-items:center;justify-content:center;font-size:${i===4?'10px':'14px'};color:#7b8ab8;cursor:pointer;transition:all .1s;user-select:none;">${l}</div>`
+      :`<div></div>`
+    ).join('')}
+  </div>
+  <div id="${id}dir" style="font-family:monospace;font-size:10px;color:#4a5580;margin-top:10px;letter-spacing:2px;min-height:16px;"></div>
+</div>
+`),'dPad',`/* anime.cutbar.in — D-pad controller */`);
+
+// Inventory Slot
+add('Gaming','Inventory Slots',demo(id=>`
+<div style="padding:10px;">
+  <div style="display:grid;grid-template-columns:repeat(4,44px);gap:6px;">
+    <style>.inv${id}{width:44px;height:44px;border-radius:8px;background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all .2s;position:relative;}.inv${id}:hover{border-color:rgba(123,92,255,.5);box-shadow:0 0 10px rgba(123,92,255,.2);}.inv${id}.sel{border-color:#00f5d4;box-shadow:0 0 14px rgba(0,245,212,.3);background:rgba(0,245,212,.04);}.inv${id} .qty{position:absolute;bottom:2px;right:4px;font-family:monospace;font-size:8px;color:#ffaa00;font-weight:700;}</style>
+    ${[['⚔️','1'],['🛡️','1'],['🧪','5'],['💎','12'],['🗝️','3'],['🏹','8'],['',''],['','']].map(([e,q])=>`
+    <div class="inv${id}" onclick="[...document.querySelectorAll('.inv${id}')].forEach(i=>i.classList.remove('sel'));this.classList.add('sel')">
+      ${e}${q?`<span class="qty">${q}</span>`:''}
+    </div>`).join('')}
+  </div>
+</div>
+`),'inventorySlots',`/* anime.cutbar.in — RPG inventory slots */`);
+
+/* ═══════════════════════════════════════════
+   CLOCKS  (5 components)
+═══════════════════════════════════════════ */
+
+// Analog Clock — real time
+add('Clocks','Analog Clock',demo(id=>`
+<canvas id="${id}" width="120" height="120" style="width:120px;height:120px;"></canvas>
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');const cx=60,cy=60,R=54;function draw(){const now=new Date();const h=now.getHours()%12,m=now.getMinutes(),s=now.getSeconds(),ms=now.getMilliseconds();ctx.clearRect(0,0,120,120);
+// Face
+ctx.beginPath();ctx.arc(cx,cy,R,0,6.28);ctx.fillStyle='#0d1120';ctx.fill();ctx.strokeStyle='rgba(0,245,212,.25)';ctx.lineWidth=2;ctx.stroke();
+// Hour markers
+for(let i=0;i<12;i++){const a=i/12*6.28-1.57;const x1=cx+Math.cos(a)*(R-6),y1=cy+Math.sin(a)*(R-6);const x2=cx+Math.cos(a)*(R-2),y2=cy+Math.sin(a)*(R-2);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=i%3===0?'rgba(0,245,212,.6)':'rgba(0,245,212,.2)';ctx.lineWidth=i%3===0?2:1;ctx.stroke();}
+// Hour hand
+const ha=(h+m/60)/12*6.28-1.57;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(ha)*30,cy+Math.sin(ha)*30);ctx.strokeStyle='#dde4f8';ctx.lineWidth=3;ctx.lineCap='round';ctx.stroke();
+// Min hand
+const ma=(m+s/60)/60*6.28-1.57;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(ma)*40,cy+Math.sin(ma)*40);ctx.strokeStyle='#00f5d4';ctx.lineWidth=2;ctx.stroke();
+// Sec hand
+const sa=(s+ms/1000)/60*6.28-1.57;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(sa)*44,cy+Math.sin(sa)*44);ctx.strokeStyle='#ff2d78';ctx.lineWidth=1.5;ctx.stroke();
+// Center dot
+ctx.beginPath();ctx.arc(cx,cy,4,0,6.28);ctx.fillStyle='#fff';ctx.fill();}
+setInterval(draw,50);draw();})();<\/script>
+`),'analogClock',`/* anime.cutbar.in — real-time analog clock */`);
+
+// Digital Clock
+add('Clocks','Digital Clock',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;">
+  <div id="${id}time" style="font-family:'Orbitron',monospace,sans-serif;font-size:30px;font-weight:700;color:#00f5d4;text-shadow:0 0 20px rgba(0,245,212,.5);letter-spacing:3px;"></div>
+  <div id="${id}date" style="font-family:monospace;font-size:9px;color:#4a5580;letter-spacing:3px;"></div>
+  <div id="${id}tz" style="font-family:monospace;font-size:8px;color:#2a3050;letter-spacing:2px;">ASIA/KOLKATA</div>
+</div>
+<script>(function(){const t=document.getElementById('${id}time'),d=document.getElementById('${id}date');if(!t)return;function tick(){const now=new Date();const h=String(now.getHours()).padStart(2,'0'),m=String(now.getMinutes()).padStart(2,'0'),s=String(now.getSeconds()).padStart(2,'0');t.textContent=h+':'+m+':'+s;const days=['SUN','MON','TUE','WED','THU','FRI','SAT'];const months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];d.textContent=days[now.getDay()]+' '+String(now.getDate()).padStart(2,'0')+' '+months[now.getMonth()]+' '+now.getFullYear();}setInterval(tick,500);tick();})();<\/script>
+`),'digitalClock',`/* anime.cutbar.in — real-time digital clock */`);
+
+// Flip Clock
+add('Clocks','Flip Clock',demo(id=>`
+<div style="display:flex;gap:6px;align-items:center;padding:10px;">
+  <style>.fc${id}{width:36px;height:46px;background:linear-gradient(180deg,#1a1a2e 50%,#0d1120 50%);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace,sans-serif;font-size:22px;font-weight:700;color:#00f5d4;text-shadow:0 0 10px rgba(0,245,212,.5);border:1px solid rgba(0,245,212,.15);position:relative;}.fc${id}::after{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(0,0,0,.5);}</style>
+  <div id="${id}h1" class="fc${id}">0</div>
+  <div id="${id}h2" class="fc${id}">0</div>
+  <div style="font-family:monospace;font-size:22px;color:#00f5d4;margin:0 2px;animation:flipColon${id} 1s step-end infinite;">:</div>
+  <div id="${id}m1" class="fc${id}">0</div>
+  <div id="${id}m2" class="fc${id}">0</div>
+  <div style="font-family:monospace;font-size:22px;color:#ff2d78;margin:0 2px;animation:flipColon${id} 1s step-end infinite;">:</div>
+  <div id="${id}s1" class="fc${id}" style="color:#ff2d78;text-shadow:0 0 10px rgba(255,45,120,.5);border-color:rgba(255,45,120,.15);">0</div>
+  <div id="${id}s2" class="fc${id}" style="color:#ff2d78;text-shadow:0 0 10px rgba(255,45,120,.5);border-color:rgba(255,45,120,.15);">0</div>
+  <style>@keyframes flipColon${id}{0%,100%{opacity:1}50%{opacity:0}}</style>
+</div>
+<script>(function(){function u(id,v){const el=document.getElementById(id);if(el)el.textContent=v;}function tick(){const n=new Date();const h=String(n.getHours()).padStart(2,'0');const m=String(n.getMinutes()).padStart(2,'0');const s=String(n.getSeconds()).padStart(2,'0');u('${id}h1',h[0]);u('${id}h2',h[1]);u('${id}m1',m[0]);u('${id}m2',m[1]);u('${id}s1',s[0]);u('${id}s2',s[1]);}setInterval(tick,500);tick();})();<\/script>
+`),'flipClock',`/* anime.cutbar.in — flip clock */`);
+
+// Countdown Timer
+add('Clocks','Countdown Timer',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px;">
+  <div style="display:flex;gap:12px;">
+    ${[['${id}cd','00','MIN'],['${id}cs','00','SEC']].map(([eid,def,lbl])=>`
+    <div style="text-align:center;">
+      <div id="${eid}" style="font-family:'Orbitron',monospace,sans-serif;font-size:32px;font-weight:700;color:#7b5cff;text-shadow:0 0 16px rgba(123,92,255,.5);width:72px;text-align:center;">${def}</div>
+      <div style="font-family:monospace;font-size:8px;color:#4a5580;letter-spacing:2px;">${lbl}</div>
+    </div>`).join('<div style="font-family:monospace;font-size:28px;color:#7b5cff;align-self:flex-start;margin-top:5px;">:</div>')}
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button id="${id}start" onclick="(function(){const startBtn=document.getElementById('${id}start'),stopBtn=document.getElementById('${id}stop'),cdEl=document.getElementById('${id}cd'),csEl=document.getElementById('${id}cs');if(window['${id}running'])return;window['${id}running']=true;let total=window['${id}total']||120;window['${id}iv']=setInterval(()=>{if(total<=0){clearInterval(window['${id}iv']);window['${id}running']=false;cdEl.textContent='00';csEl.textContent='00';cdEl.style.color='#ff2d78';csEl.style.color='#ff2d78';return;}total--;window['${id}total']=total;cdEl.textContent=String(Math.floor(total/60)).padStart(2,'0');csEl.textContent=String(total%60).padStart(2,'0');},1000);})()" style="padding:6px 14px;border:1px solid rgba(0,245,212,.3);background:transparent;color:#00f5d4;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">▶ START</button>
+    <button id="${id}stop" onclick="clearInterval(window['${id}iv']);window['${id}running']=false;" style="padding:6px 14px;border:1px solid rgba(255,45,120,.3);background:transparent;color:#ff2d78;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">■ STOP</button>
+    <button onclick="clearInterval(window['${id}iv']);window['${id}running']=false;window['${id}total']=120;document.getElementById('${id}cd').textContent='02';document.getElementById('${id}cs').textContent='00';document.getElementById('${id}cd').style.color='#7b5cff';document.getElementById('${id}cs').style.color='#7b5cff';" style="padding:6px 14px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#4a5580;font-family:monospace;font-size:10px;cursor:pointer;border-radius:6px;">↺</button>
+  </div>
+</div>
+`),'countdownTimer',`/* anime.cutbar.in — countdown timer */`);
+
+// Binary Clock
+add('Clocks','Binary Clock',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px;">
+  <canvas id="${id}" width="150" height="70" style="width:150px;height:70px;"></canvas>
+  <div style="font-family:monospace;font-size:8px;color:#2a3050;letter-spacing:2px;">BINARY CLOCK — H M S</div>
+</div>
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');function draw(){const now=new Date();const vals=[now.getHours(),now.getMinutes(),now.getSeconds()];ctx.clearRect(0,0,150,70);vals.forEach((v,col)=>{const bits=v.toString(2).padStart(6,'0');[...bits].forEach((b,row)=>{const x=20+col*40,y=5+row*10;ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,8,8,2):ctx.rect(x,y,8,8);if(b==='1'){ctx.fillStyle=['#00f5d4','#7b5cff','#ff2d78'][col];ctx.shadowBlur=8;ctx.shadowColor=['#00f5d4','#7b5cff','#ff2d78'][col];}else{ctx.fillStyle='rgba(255,255,255,.06)';ctx.shadowBlur=0;}ctx.fill();ctx.shadowBlur=0;});});}setInterval(draw,500);draw();})();<\/script>
+`),'binaryClock',`/* anime.cutbar.in — binary clock */`);
+
+/* ═══════════════════════════════════════════
+   ANIME FX  (5 components)
+═══════════════════════════════════════════ */
+
+// Sakura Petals
+add('Anime FX','Sakura Petals',demo(id=>`
+<div id="${id}" style="width:200px;height:120px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(255,100,150,.08),transparent 70%);border-radius:12px;border:1px solid rgba(255,100,150,.12);">
+  <style>@keyframes sakura${id}{0%{transform:translateY(-20px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(130px) translateX(var(--dx)) rotate(var(--dr));opacity:0}}</style>
+</div>
+<script>(function(){const wrap=document.getElementById('${id}');if(!wrap)return;const petals=['🌸','🌺','🌷','🌼'];function spawn(){const p=document.createElement('div');p.style.cssText='position:absolute;font-size:'+(10+Math.random()*12)+'px;left:'+(Math.random()*180)+'px;top:-20px;--dx:'+(Math.random()*80-40)+'px;--dr:'+(Math.random()*360)+'deg;animation:sakura${id} '+(2+Math.random()*3)+'s ease-in forwards;pointer-events:none;';p.textContent=petals[Math.floor(Math.random()*petals.length)];wrap.appendChild(p);setTimeout(()=>p.remove(),5000);}const iv=setInterval(spawn,300);spawn();spawn();spawn();})();<\/script>
+`),'sakuraPetals',`/* anime.cutbar.in — sakura petals animation */`);
+
+// Energy Aura
+add('Anime FX','Energy Aura',demo(id=>`
+<div style="display:flex;justify-content:center;align-items:center;height:130px;position:relative;">
+  <style>
+  @keyframes aura1${id}{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.15);opacity:.8}}
+  @keyframes aura2${id}{0%,100%{transform:scale(1.1) rotate(0deg);opacity:.4}50%{transform:scale(1.25) rotate(180deg);opacity:.7}}
+  @keyframes aura3${id}{0%{transform:scale(1.2) rotate(0deg)}100%{transform:scale(1.2) rotate(360deg)}}
+  </style>
+  <div style="position:relative;width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
+    <div style="position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(123,92,255,.35),transparent 70%);animation:aura1${id} 2s ease-in-out infinite;"></div>
+    <div style="position:absolute;inset:-12px;border-radius:50%;border:2px solid rgba(0,245,212,.3);animation:aura2${id} 3s ease-in-out infinite;"></div>
+    <div style="position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(255,45,120,.4);animation:aura3${id} 4s linear infinite;"></div>
+    <div style="width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,#fff 10%,#00f5d4 40%,rgba(123,92,255,.8) 70%,transparent);box-shadow:0 0 30px rgba(123,92,255,.6),0 0 60px rgba(0,245,212,.3);display:flex;align-items:center;justify-content:center;font-size:22px;">⚡</div>
+  </div>
+</div>
+`),'energyAura',`/* anime.cutbar.in — anime energy aura */`);
+
+// Speed Lines
+add('Anime FX','Speed Lines',demo(id=>`
+<canvas id="${id}" width="200" height="120" style="width:200px;height:120px;border-radius:12px;background:#07090f;"></canvas>
+<script>(function(){const c=document.getElementById('${id}');if(!c)return;const ctx=c.getContext('2d');const W=200,H=120,cx=W/2,cy=H/2;const lines=Array.from({length:40},()=>({angle:Math.random()*Math.PI*2,len:20+Math.random()*60,speed:.5+Math.random()*2,dist:10+Math.random()*40}));function draw(){ctx.fillStyle='rgba(7,9,15,.3)';ctx.fillRect(0,0,W,H);lines.forEach(l=>{l.dist+=l.speed;if(l.dist>80){l.dist=5;l.len=20+Math.random()*60;l.angle=Math.random()*Math.PI*2;}const x1=cx+Math.cos(l.angle)*l.dist,y1=cy+Math.sin(l.angle)*l.dist;const x2=cx+Math.cos(l.angle)*(l.dist+l.len),y2=cy+Math.sin(l.angle)*(l.dist+l.len);const grad=ctx.createLinearGradient(x1,y1,x2,y2);grad.addColorStop(0,'rgba(0,245,212,0)');grad.addColorStop(1,'rgba(0,245,212,.8)');ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=grad;ctx.lineWidth=1.5;ctx.stroke();});requestAnimationFrame(draw);}draw();})();<\/script>
+`),'speedLines',`/* anime.cutbar.in — anime speed lines */`);
+
+// Explosion Burst
+add('Anime FX','Explosion Burst',demo(id=>`
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:10px;">
+<div style="position:relative;width:120px;height:100px;display:flex;align-items:center;justify-content:center;">
+  <canvas id="${id}" width="120" height="100" style="position:absolute;inset:0;width:120px;height:100px;"></canvas>
+  <button onclick="(function(id){const c=document.getElementById(id);if(!c)return;const ctx=c.getContext('2d');const W=120,H=100,cx=60,cy=50;const parts=Array.from({length:30},()=>({x:cx,y:cy,vx:(Math.random()-.5)*8,vy:(Math.random()-.5)*8-3,life:1,col:['#ff2d78','#ff6600','#ffcc00','#00f5d4','#7b5cff'][Math.floor(Math.random()*5)],r:2+Math.random()*4}));function tick(){ctx.clearRect(0,0,W,H);let alive=false;parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.3;p.life-=.025;if(p.life>0){alive=true;ctx.beginPath();ctx.arc(p.x,p.y,p.r*p.life,0,6.28);ctx.fillStyle=p.col;ctx.globalAlpha=p.life;ctx.shadowBlur=8;ctx.shadowColor=p.col;ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}});if(alive)requestAnimationFrame(tick);}tick();}('${id}'))" style="position:relative;z-index:1;padding:10px 20px;background:linear-gradient(135deg,#ff6600,#ff2d78);border:none;border-radius:10px;color:#fff;font-family:monospace;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:1px;">💥 EXPLODE</button>
+</div>
+</div>
+`),'explosionBurst',`/* anime.cutbar.in — explosion burst particle FX */`);
+
+// Glitch Screen
+add('Anime FX','Glitch Screen',demo(id=>`
+<div id="${id}" style="width:180px;height:100px;background:#0d1120;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;border:1px solid rgba(0,245,212,.15);" onclick="glitch${id}()">
+  <canvas id="${id}c" width="180" height="100" style="width:180px;height:100px;display:block;"></canvas>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:12px;color:#00f5d4;letter-spacing:3px;text-shadow:0 0 10px #00f5d4;pointer-events:none;">CLICK ME</div>
+</div>
+<script>(function(){const c=document.getElementById('${id}c');if(!c)return;const ctx=c.getContext('2d');const W=180,H=100;let glitching=false;function scanlines(){ctx.clearRect(0,0,W,H);for(let y=0;y<H;y+=3){ctx.fillStyle='rgba(0,245,212,.015)';ctx.fillRect(0,y,W,1);}requestAnimationFrame(scanlines);}scanlines();window.glitch${id}=function(){if(glitching)return;glitching=true;let frames=0;const iv=setInterval(()=>{ctx.clearRect(0,0,W,H);const slices=3+Math.floor(Math.random()*5);for(let i=0;i<slices;i++){const sy=Math.random()*H,sh=Math.random()*20,dx=(Math.random()-.5)*30;ctx.fillStyle=Math.random()>.5?'rgba(255,0,100,.3)':'rgba(0,245,212,.3)';ctx.fillRect(dx,sy,W,sh);}frames++;if(frames>8){clearInterval(iv);ctx.clearRect(0,0,W,H);glitching=false;}},60);};})();<\/script>
+`),'glitchScreen',`/* anime.cutbar.in — glitch screen effect */`);
+
+console.log('✅ anime.cutbar.in FINAL — '+Object.values(window.componentsList).reduce((a,c)=>a+c.length,0)+' components | '+Object.keys(window.componentsList).length+' categories');
