@@ -19,8 +19,15 @@
   <meta name="twitter:title" content="anime.cutbar.in — 115+ Unique UI Components">
   <meta name="twitter:description" content="Handcrafted UI magic. Copy & use instantly.">
   <meta name="twitter:image" content="https://anime.cutbar.in/og.png">
-  <!-- AdSense -->
+  <!-- AdSense: Auto Ads (shows ads automatically across the page) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7501400445815822" crossorigin="anonymous"></script>
+  <script>
+    // Auto ads — Google places them automatically
+    (adsbygoogle=window.adsbygoogle||[]).push({
+      google_ad_client: "ca-pub-7501400445815822",
+      enable_page_level_ads: true
+    });
+  </script>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,12 +339,30 @@
       <button id="loadMoreBtn">[ LOAD MORE ]</button>
     </div>
 
-    <!-- AdSense — BOTTOM only, safe height -->
-    <div style="margin:40px 0 0;text-align:center;overflow:hidden;border-radius:10px;">
-      <ins class="adsbygoogle" style="display:block"
-        data-ad-client="ca-pub-7501400445815822"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+    <!-- ═══ AD UNITS ═══════════════════════════════════════════
+         IMPORTANT: Replace SLOT_ID_1 / SLOT_ID_2 with real slot IDs
+         Get slot IDs from: adsense.google.com → Ads → By ad unit → Create
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- Ad Unit 1: Below component grid -->
+    <div style="margin:32px auto;max-width:728px;text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7501400445815822"
+           data-ad-slot="SLOT_ID_1"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <!-- Ad Unit 2: Footer leaderboard -->
+    <div style="margin:16px auto 0;max-width:728px;text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7501400445815822"
+           data-ad-slot="SLOT_ID_2"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
       <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
   </div>
@@ -499,6 +524,19 @@ function render(append) {
 }
 
 function appendCard(root, comp, isNew, idx) {
+  // Inject in-content ad every 9 cards (idx 8, 17, 26...)
+  if (idx > 0 && idx % 9 === 0) {
+    const adWrap = document.createElement('div');
+    adWrap.style.cssText = 'grid-column:1/-1;text-align:center;margin:8px 0;';
+    adWrap.innerHTML =
+      '<ins class="adsbygoogle" style="display:block" ' +
+      'data-ad-client="ca-pub-7501400445815822" ' +
+      'data-ad-slot="SLOT_ID_3" ' +
+      'data-ad-format="auto" ' +
+      'data-full-width-responsive="true"></ins>';
+    root.appendChild(adWrap);
+    try { (adsbygoogle=window.adsbygoogle||[]).push({}); } catch(e){}
+  }
   const card = document.createElement('div');
   card.className = 'card';
   card.style.animationDelay = (idx * 0.04) + 's';
