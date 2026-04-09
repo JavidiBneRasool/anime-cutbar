@@ -302,7 +302,7 @@
     </div>
     <div class="adstrip">
       <div class="adot"></div>
-      PREMIUM AD SPACE — <a href="mailto:ads@anime.cutbar.in">ads@anime.cutbar.in</a>
+      PREMIUM AD SPACE — <a href="/cdn-cgi/l/email-protection#f3929780b3929d9a9e96dd908687919281dd9a9d"><span class="__cf_email__" data-cfemail="5332372013323d3a3e367d3026273132217d3a3d">[email&#160;protected]</span></a>
       <div class="adot"></div>
     </div>
     <div class="tabs" id="tabs"></div>
@@ -349,10 +349,10 @@
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7501400445815822"
-           data-ad-slot="SLOT_ID_1"
+           data-ad-slot="2188361473"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
 
     <!-- Ad Unit 2: Footer leaderboard -->
@@ -360,7 +360,7 @@
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7501400445815822"
-           data-ad-slot="SLOT_ID_2"
+           data-ad-slot="2188361473"
            data-ad-format="horizontal"
            data-full-width-responsive="true"></ins>
       <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
@@ -531,7 +531,7 @@ function appendCard(root, comp, isNew, idx) {
     adWrap.innerHTML =
       '<ins class="adsbygoogle" style="display:block" ' +
       'data-ad-client="ca-pub-7501400445815822" ' +
-      'data-ad-slot="SLOT_ID_3" ' +
+      'data-ad-slot="2188361473" ' +
       'data-ad-format="auto" ' +
       'data-full-width-responsive="true"></ins>';
     root.appendChild(adWrap);
@@ -650,9 +650,12 @@ function init() {
   if (window.componentsList && Object.keys(window.componentsList).length) {
     all = window.componentsList;
     order = Object.keys(all);
-    const total = order.reduce((a, k) => a + all[k].length, 0);
-    animateCounter(document.getElementById('heroNum'), total);
-    if (order.length) switchCat(order[0]);
+cat = order[0];
+    renderTabs();
+    render(false);
+    const total = Object.values(all).reduce((s,a)=>s+a.length,0);
+    const el = document.getElementById('heroNum');
+    if (el) animateCounter(el, total);
   } else {
     setTimeout(init, 80);
   }
